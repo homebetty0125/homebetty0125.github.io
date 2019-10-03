@@ -1,2 +1,2 @@
-# homebetty0125.github.io2
+# homebetty0125.github.io
 Betty's Demo
