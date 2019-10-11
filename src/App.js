@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import './open-sans.css';
+import './material-icon.css';
+import './App.scss';
+// import './App.css';
 
 // 3: xxx.json
 // 4: axios.get('./xxx.json').then((res) => { console.log(res) });
 const fakeData = {
     profile: {
-        thumb: '',
+        thumb: '//btgitdev.bitbucket.io/demo/img/betty/me.jpg',
         nameChinese: '梁湧昇',
         nameEnglish: 'Betty Liang',
         gender: '女',
@@ -33,8 +36,6 @@ const fakeData = {
                 'ES6',
                 'AJAX & API 串接',
                 'React',
-                'React Redux',
-                'Redux-Saga',
                 'jQuery',
             ],
         },
@@ -45,7 +46,6 @@ const fakeData = {
                 'NPM',
                 'Webpack',
                 'VSCode',
-                'Jest',
                 'ESLint - Airbnb',
             ],
         },
@@ -67,30 +67,36 @@ const fakeData = {
     experience: [
         {
             position: 'Front-End Web Developer',
-            compony: '網訊科技Cyberinfo',
+            company: '網訊科技Cyberinfo',
             start: '2017-07',
             end: '2019-10',
+            thumb: '',
+            description: '11111',
             projects: [
                 {
                     name: '轉送幫',
+                    link: '',
                     skills: [
                         'AJAX / API 串接後端資料'
                     ],
                 },
                 {
-                    name: '上海樂濤',
+                    name: '上海樂淘',
+                    link: '',
                     skills: [
                         'AJAX / API 串接後端資料'
                     ],
                 },
                 {
                     name: '淘購',
+                    link: '',
                     skills: [
                         'AJAX / API 串接後端資料'
                     ],
                 },
                 {
                     name: '代購幫',
+                    link: '',
                     skills: [
                         'AJAX / API 串接後端資料'
                     ],
@@ -99,9 +105,11 @@ const fakeData = {
         },
         {
             position: 'Front-End Web Developer',
-            compony: 'FriendFinder Networks Inc.',
+            company: 'FriendFinder Networks Inc.',
             start: '2014-06',
             end: '2017-06',
+            thumb: '',
+            description: '11111',
             projects: [
                 {
                     name: 'Mobile Site Redesign',
@@ -142,9 +150,11 @@ const fakeData = {
         },
         {
             position: 'QA Engineer',
-            compony: 'FriendFinder Networks Inc.',
+            company: 'FriendFinder Networks Inc.',
             start: '2012-11',
             end: '2014-05',
+            thumb: '',
+            description: '11111',
             projects: [],
         },
     ],
@@ -154,17 +164,100 @@ const fakeData = {
 // import User from './components/User';
 const User = (props) => (
 
-    <span className="user betty">
+    <span className="user">
         {props.name}
     </span>
 
 );
+
+const Profile = (props) => (
+
+    <aside className="profile">
+        <div className="wrap">
+            <div className="thumb">
+                <img src={props.image} alt={props.nameEnglish} />
+            </div>
+
+            {/* About me */}
+            <div className="about">
+                <h2 className="title">關於我</h2>
+                <p>{props.about}</p>
+            </div>
+
+            {/* Contact me */}
+            <div className="contact">
+                <h2 className="title">聯絡我</h2>
+                <p>
+                    <i className="material-icons">phone</i>
+                    <span>{props.cellphone}</span>
+                </p>
+                <p>
+                    <i className="material-icons">mail</i>
+                    <span>{props.email}</span>
+                </p>
+            </div>
+        </div>
+    </aside>
+
+);
+
+const skill = (skills) => skills.map((item, idx) => (
+
+    <li className="skill-wrap" key={idx}>
+        <h3>{item.skill}</h3>
+        <ul>{skillItems(item.items)}</ul>
+    </li>
+
+));
+
+const skillItems = (items) => items.map((item, idx) => (
+
+    <li key={idx}>{item}</li>
+
+));
+
+const period = (start, end) => (`${start.replace(/-/g, '/')} - ${end.replace(/-/g, '/')}`),
+    isOdd = (num) => (num % 2);
+
+const education = (education) => education.map((item, idx) => (
+
+        <li className="item-wrap" key={idx}>
+            <div className="thumb">
+                <img src={`//btgitdev.bitbucket.io/demo/img/betty/school-${idx + 1}.jpg`} alt="" />
+            </div>
+            <div className="content">
+                <h3 className="title">{item.school}</h3>
+                <p>{item.major}</p>
+                <span className="date">{period(item.start, item.end)}</span>
+            </div>
+        </li>
+
+    )),
+    experience = (experiences) => experiences.map((item, idx) => (
+
+        <li className={`bubble ${isOdd(idx + 1) ? 'left' : 'right'}`} key={idx}>
+            {/* <h3>{isOdd(idx + 1)}</h3> */}
+            <div className="experience-wrap">
+                <div className="date">{period(item.start, item.end)}</div>
+                <div className="company" idx={`check-${idx + 1}`}>
+                    <img src="//btgitdev.bitbucket.io/demo/img/ffn.jpg" alt="" />
+                </div>
+                <h3>
+                    <span>{item.position}</span>
+                    <span> - {item.company}</span>
+                </h3>
+                <p className="description">{item.description}</p>
+            </div>
+        </li>
+
+    ));
 
 class App extends Component {
 
     constructor (props) {
 
         super(props);
+
         this.state = {
             name: ''
         };
@@ -184,14 +277,47 @@ class App extends Component {
     render () {
 
         return (
-            <h1>
-                Name:
-                <User
-                    name={this.state.name}
-                    age={this.state.age}
+            <main>
+                <Profile
+                    image={fakeData.profile.thumb}
+                    nameChinese={fakeData.profile.nameChinese}
+                    nameEnglish={fakeData.profile.nameEnglish}
+                    about={fakeData.profile.about}
+                    cellphone={fakeData.profile.cellphone}
+                    email={fakeData.profile.email}
                 />
-                <button onClick={this.showAlert}>click</button>
-            </h1>
+
+                <section>
+                    <div className="info-wrap">
+                        <div className="grid">
+                            <h2>學歷</h2>
+
+                            <ul className="items">{education(fakeData.education)}</ul>
+                        </div>
+
+                        <div className="grid skills">
+                            <h2>專業技能</h2>
+
+                            <ul className="items">{skill(fakeData.skills)}</ul>
+                        </div>
+                    </div>
+
+                    <div className="info-wrap">
+                        <h2>經歷</h2>
+
+                        <ul className="items experiences">{experience(fakeData.experience)}</ul>
+                    </div>
+                </section>
+            </main>
+
+            // <h1>
+            //     Name:
+            //     <User
+            //         name={this.state.name}
+            //         age={this.state.age}
+            //     />
+            //     <button onClick={this.showAlert}>click</button>
+            // </h1>
         );
 
     }
