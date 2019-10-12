@@ -1,3 +1,7 @@
+$nodeColor: #E3C381;
+$space: 20px;
+$nodeWidth: 4px;
+
 * {
     font-family: 'Open Sans', 'Microsoft JhengHei';
 }
@@ -23,7 +27,7 @@ main {
 
     > * {
         flex: 1;
-        padding: 40px 20px;
+        padding: 40px $space;
     }
 }
 
@@ -50,10 +54,11 @@ main {
 
     &:first-child {
         display: flex;
+        display: none;
     }
 
     h2 {
-        margin-bottom: 20px;
+        margin-bottom: $space;
     }
 
     .grid {
@@ -121,6 +126,18 @@ main {
 .experiences {
     display: flex;
     flex-direction: column;
+    position: relative;
+    padding-top: 40px;
+
+    &:after {
+        content: '';
+        width: $nodeWidth;
+        height: 100%;
+        background-color: $nodeColor;
+        position: absolute;
+        left: calc(100% / 2 - #{$nodeWidth});
+        top: 0;
+    }
 
     .left {
         .experience-wrap {
@@ -139,7 +156,31 @@ main {
     }
 
     .experience-wrap {
-        width: calc(50% - 16px);
-        border: 1px solid pink;
+        width: calc(50% - #{$space});
+        width: 50%;
+        border-top: 4px solid $nodeColor;
+        position: relative;
+    }
+
+    .company {
+        $company: 100px;
+        width: $company;
+        height: $company;
+        line-height: $company;
+        text-align: center;
+        border: 4px solid $nodeColor;
+        border-radius: 50%;
+        position: absolute;
+        // top: -#{$nodeWidth};
+
+        img {
+            width: 80%;
+            border-radius: 50%;
+        }
+    }
+
+    .description {
+        min-height: 100px;
+        word-break: break-word;
     }
 }
