@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import './css/open-sans.css';
-import './css/material-icon.css';
-import './css/App.scss';
+import './css/Resume.scss';
 
 import logoCyberinfo from './images/cyberinfo.png';
 import logoFFN from './images/ffn.jpg';
@@ -160,18 +158,7 @@ const fakeData = {
     ],
 };
 
-// User.js (( functional company
-// import User from './components/User';
-// const User = (props) => (
-
-//     <span className="user">
-//         {props.name}
-//     </span>
-
-// );
-
 const period = (start, end) => (`${start.replace(/-/g, '/')} - ${end.replace(/-/g, '/')}`),
-    isOdd = (num) => (num % 2),
     handleParagraph = (str) => (str.replace(/\n/g, '<br>')),
     showDescComponent = (company, projects) => {
 
@@ -239,14 +226,6 @@ const Profile = (props) => (
             </h2>
             <ul className="items">{education(fakeData.education)}</ul>
         </div>
-
-        {/* Skills */}
-        {/* <div className="skills">
-            <h2 className="title" data-icon="stars">
-                <span>專業技能</span>
-            </h2>
-            <ul className="items">{skill(fakeData.skills)}</ul>
-        </div> */}
     </aside>
 
 );
@@ -297,43 +276,13 @@ const experience = (experiences) => experiences.map((item, idx) => (
                 </div>
             </div>
             <div className="company-description">
-                {
-                    showDescComponent(item.companyIndex, item.projects)
-                    // (item.projects.length) ? (
-
-                    //     <DescCyberinfo
-                    //         companyIndex={item.companyIndex}
-                    //         projects={item.projects}
-                    //     />
-
-                    // ) : `11111`
-                }
+                {showDescComponent(item.companyIndex, item.projects)}
             </div>
         </li>
 
     ));
 
-class App extends Component {
-
-    constructor (props) {
-
-        super(props);
-
-        this.state = {
-            name: ''
-        };
-
-        this.showAlert = this.showAlert.bind(this);
-
-    }
-
-    showAlert () {
-
-        this.setState({
-            name: 'betty'
-        });
-
-    }
+class Resume extends Component {
 
     render () {
 
@@ -348,41 +297,22 @@ class App extends Component {
                     email={fakeData.profile.email}
                 />
 
-                <section className="work-detail">
-                     <h2 className="title" data-icon="stars">
-                        <span>經歷</span>
-                    </h2>
-
-                    <ul className="items experiences">{experience(fakeData.experience)}</ul>
-
-                    {/* <div className="info-wrap skills">
-                        <h2>專業技能</h2>
-
-                        <ul className="items">{skill(fakeData.skills)}</ul>
-                    </div> */}
-
-                    {/* <div className="info-wrap">
+                <section>
+                    <div className="work-detail">
                         <h2 className="title" data-icon="stars">
                             <span>經歷</span>
                         </h2>
 
                         <ul className="items experiences">{experience(fakeData.experience)}</ul>
-                    </div> */}
+                    </div>
+
+                    <footer>Design by Betty @2019</footer>
                 </section>
             </main>
-
-            // <h1>
-            //     Name:
-            //     <User
-            //         name={this.state.name}
-            //         age={this.state.age}
-            //     />
-            //     <button onClick={this.showAlert}>click</button>
-            // </h1>
         );
 
     }
 
 }
 
-export default App;
+export default Resume;

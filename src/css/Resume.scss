@@ -1,100 +1,5 @@
-// Space
-$space: 20px;
-$space40: calc(#{$space} * 2);
-$space60: calc(#{$space} * 3);
-$space80: calc(#{$space} * 4);
-
-// Colors
-$font: #333;
-$link: #005f95;
-$white: #FFF;
-$black: #000;
-$yellowLight: #FFFFF3;
-$purpleLight: #A593E0;
-$purpleDark: #892D5E;
-$gray: #959595;
-$grayLight: #E0E3DA;
-$grayDark: #566270;
-$brown: #C3886A;
-$brownLight: #DFBC94;
-$brownDark: #9B403B;
-$greenMocha: #DDF7D4;
-$greenLight: #00C965;
-
-// 材積
-$profileWidth: 28%;
-$profileImg: 180px;
-$icon: 26px;
-$ball: 200px;
-
-@mixin flexAlign {
-    display: flex;
-    align-items: center;
-}
-
-@mixin v-align {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-@mixin alignX {
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-@mixin alignY {
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-@mixin showIcon {
-    content: attr(data-icon);
-    font-family: 'Material Icons';
-    position: absolute;
-}
-
-* {
-    font-family: 'Open Sans', 'Microsoft JhengHei';
-}
-
-h1, h2, h3, h4, h5, h6, p {
-    margin: 0;
-    line-height: 1.8;
-}
-
-a {
-    color: $link;
-
-    &:-webkit-any-link {
-        color: $link;
-    }
-}
-
-ul {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding-inline-start: 0;
-    // overflow: hidden;
-
-    li {
-        list-style: none;
-    }
-}
-
-main {
-    line-height: 1.6;
-    color: $font;
-    display: flex;
-
-    > * {
-        flex: 1;
-        padding: $space40 0;
-    }
-
-    section {
-        padding: $space40 $space60;
-    }
-}
+@import './_variables';
+@import './Layout';
 
 img {
     width: 100%;
@@ -135,7 +40,7 @@ img {
 .profile {
     letter-spacing: 1px;
     color: $black;
-    background-color: $grayLight;
+    background-color: $greenMochaLight;
     flex: 0 0 $profileWidth;
     padding-left: $space40;
     padding-right: $space40;
@@ -189,7 +94,6 @@ img {
 }
 
 .about {
-    // max-width: 90%;
     font-size: 18px;
     margin-left: auto;
     margin-right: auto;
@@ -304,7 +208,6 @@ img {
 
     img {
         max-width: 120px;
-        // border: 1px solid $yellowLight;
         padding: 4px;
     }
 
@@ -323,7 +226,7 @@ img {
 }
 
 .company-description {
-    border: 1px solid $grayLight;
+    border: 1px solid $greenMochaLight;
     border-top: 0;
     padding: $space60 $space40 $space40;
     position: relative;
@@ -387,7 +290,6 @@ img {
     font-size: 18px;
     font-size: 16px;
     margin-top: $space;
-    // padding: 0 $space 0 46px;
     padding-left: 24px;
 
     li {
@@ -419,11 +321,13 @@ img {
 }
 
 .work-detail {
+    padding: $space40 $space60;
+
     .title {
         margin-bottom: $space60;
 
         &:before {
-            background-color: $grayLight;
+            background-color: $greenMochaLight;
         }
     }
 }
@@ -433,33 +337,5 @@ img {
         &:first-child {
             display: none;
         }
-    }
-}
-
-// 動畫
-@keyframes ball {
-    0% {
-        transform: translateY(12px);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-
-    100% {
-        transform: translateY(12px);
-    }
-}
-
-@keyframes ballShadow {
-    0%, 100% {
-        width: 88%;
-    }
-
-    50% {
-        width: 90%;
-        height: 12px;
-        background-color: #eee;
-        bottom: -20px;
     }
 }

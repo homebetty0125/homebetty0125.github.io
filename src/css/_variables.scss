@@ -1,0 +1,51 @@
+// Space
+$space: 20px;
+$space40: calc(#{$space} * 2);
+$space60: calc(#{$space} * 3);
+$space80: calc(#{$space} * 4);
+
+// Colors
+$font: #333;
+$link: #005f95;
+$white: #FFF;
+$black: #000;
+$yellowLight: #FFFFF3;
+$purpleLight: #A593E0;
+$purpleDark: #892D5E;
+$gray: #959595;
+$grayLight: #F6F6F6;
+$grayDark: #566270;
+$greenMocha: #DDF7D4;
+$greenMochaLight: #E0E3DA;
+$greenLight: #00C965;
+
+// 材積
+$profileWidth: 28%;
+$profileImg: 180px;
+$icon: 26px;
+
+@mixin flexAlign {
+    display: flex;
+    align-items: center;
+}
+
+@mixin v-align {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@mixin alignX {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin alignY {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin showIcon {
+    content: attr(data-icon);
+    font-family: 'Material Icons';
+    position: absolute;
+}
