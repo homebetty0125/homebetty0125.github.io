@@ -287,6 +287,7 @@ class Resume extends Component {
     render () {
 
         return (
+
             <main>
                 <Profile
                     image={fakeData.profile.thumb}
@@ -309,6 +310,7 @@ class Resume extends Component {
                     <footer>Design by Betty @2019</footer>
                 </section>
             </main>
+
         );
 
     }

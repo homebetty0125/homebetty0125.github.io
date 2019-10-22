@@ -41,15 +41,19 @@ main {
     aside {
         padding: $space40 0;
     }
-
-    section {
-        padding: $space40 0 0;
-    }
 }
 
 footer {
     font-size: 16px;
     text-align: center;
     background-color: $grayLight;
-    padding: 8px 60px;
+    padding: $space8 $space60;
+}
+
+.web {
+    display: block;
+}
+
+.mobile {
+    display: none;
 }

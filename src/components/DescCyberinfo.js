@@ -38,7 +38,7 @@ class DescCyberinfo extends PureComponent {
                 </div>
 
                 {/* 蝙蝠特效 */}
-                <div className="img">
+                <div className="img web">
                     <img src={holloweenBat} alt="bat"/>
                     <a href={this.TSB.link} target="_blank">點我看{this.TSB.name}</a>
                 </div>

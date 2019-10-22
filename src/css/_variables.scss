@@ -1,5 +1,8 @@
 // Space
 $space: 20px;
+$space8: 8px;
+$space16: 16px;
+$space24: 24px;
 $space40: calc(#{$space} * 2);
 $space60: calc(#{$space} * 3);
 $space80: calc(#{$space} * 4);
@@ -23,6 +26,10 @@ $greenLight: #00C965;
 $profileWidth: 28%;
 $profileImg: 180px;
 $icon: 26px;
+
+// RWD 界線
+$web: 1200px;
+$mobile: 768px;
 
 @mixin flexAlign {
     display: flex;

@@ -9,6 +9,7 @@ img {
 }
 
 .title {
+    font-size: 26px;
     text-align: center;
     margin-bottom: 36px;
     padding-bottom: 4px;
@@ -19,7 +20,7 @@ img {
         width: 50%;
         height: 3px;
         position: absolute;
-        bottom: -8px;
+        bottom: -$space8;
         background-color: $yellowLight;
         @include alignX;
     }
@@ -31,7 +32,7 @@ img {
         color: $purpleDark;
         background-color: $white;
         border-radius: 50%;
-        bottom: -20px;
+        bottom: -$space;
         @include showIcon;
         @include alignX;
     }
@@ -67,10 +68,6 @@ img {
     border-radius: 50%;
     margin-right: $space;
     padding: 4px;
-
-    img {
-        vertical-align: middle;
-    }
 }
 
 .contact {
@@ -88,7 +85,7 @@ img {
         font-size: 18px;
         border: 2px solid;
         border-radius: 50%;
-        margin-right: 8px;
+        margin-right: $space8;
         padding: 2px;
     }
 }
@@ -155,13 +152,15 @@ img {
         transition: all .1s ease-in;
     }
 
-    &:nth-child(n + 2) {
-        font-size: 18px;
-        flex: 1;
-    }
+    @media screen and (min-width: 1201px) {
+        &:nth-child(n + 2) {
+            font-size: 18px;
+            flex: 1;
+        }
 
-    &:nth-child(2) {
-        margin-right: 30px;
+        &:nth-child(2) {
+            margin-right: 30px;
+        }
     }
 }
 
@@ -185,7 +184,7 @@ img {
         text-align: center;
         background-color: $grayDark;
         border: 1px solid $yellowLight;
-        padding-top: 8px;
+        padding-top: $space8;
         position: absolute;
         right: $space40;
         bottom: #{-$flagWidth - 10px};
@@ -287,10 +286,9 @@ img {
 
 .projects {
     line-height: 1.8;
-    font-size: 18px;
     font-size: 16px;
     margin-top: $space;
-    padding-left: 24px;
+    padding-left: $space24;
 
     li {
         list-style: square;
@@ -338,4 +336,108 @@ img {
             display: none;
         }
     }
+}
+
+// Web
+@media screen and (min-width: 1201px) {
+    .profile {
+        min-width: 532px;
+    }
+
+    section {
+        min-width: 1300px;
+    }
+}
+
+// Tab
+@media screen and (max-width: $web) {
+    .web {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    main {
+        flex-wrap: wrap;
+
+        > * {
+            flex: 100%;
+        }
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .profile {
+        flex: 1;
+        padding: $space24;
+
+        > * {
+            margin-bottom: $space;
+        }
+    }
+
+    .education {
+        .items {
+            max-width: 100%;
+            display: flex;
+
+            > * {
+                flex: 1;
+            }
+        }
+    }
+
+    .work-detail {
+        padding: $space24;
+
+        .title {
+            margin-bottom: $space40;
+        }
+    }
+
+    .company-description {
+        padding: $space;
+    }
+
+    .company-info {
+        img {
+            max-width: 100px;
+        }
+
+        .position {
+            font-size: 20px;
+        }
+
+        .name {
+            font-size: 16px;
+        }
+
+        .date {
+            font-size: 14px;
+        }
+    }
+
+    .experience-wrap {
+        font-size: 16px;
+        margin-bottom: $space;
+    }
+
+    .projects {
+        line-height: 1.6;
+        font-size: 14px;
+
+        li {
+            &:not(:last-child) {
+                margin-bottom: $space8;
+            }
+        }
+    }
+}
+
+// Mobile
+@media screen and (max-width: $mobile) {
 }

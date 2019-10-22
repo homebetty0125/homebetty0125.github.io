@@ -1,0 +1,84 @@
+@import './_variables';
+
+// Web
+@media screen and (min-width: 1201px) {
+    .profile {
+        min-width: 532px;
+    }
+
+    section {
+        min-width: 1300px;
+    }
+}
+
+// Tab
+@media screen and (max-width: $web) {
+    .web {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    main {
+        flex-wrap: wrap;
+
+        > * {
+            flex: 100%;
+        }
+    }
+
+    .profile {
+        flex: 1;
+    }
+
+    .work-detail {
+        padding: 24px;
+
+        .title {
+            margin-bottom: 40px;
+        }
+    }
+
+    .company-description {
+        padding: 20px;
+    }
+
+    .company-info {
+        img {
+            max-width: 100px;
+        }
+
+        .position {
+            font-size: 20px;
+        }
+
+        .name {
+            font-size: 16px;
+        }
+
+        .date {
+            font-size: 14px;
+        }
+    }
+
+    .experience-wrap {
+        font-size: 16px;
+    }
+
+    .projects {
+        line-height: 1.6;
+        font-size: 14px;
+
+        li {
+            &:not(:last-child) {
+                margin-bottom: 8px;
+            }
+        }
+    }
+}
+
+// Mobile
+@media screen and (max-width: $mobile) {
+}
