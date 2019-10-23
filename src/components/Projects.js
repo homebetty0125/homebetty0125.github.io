@@ -1,25 +1,28 @@
 import React, { Fragment } from 'react';
 
-const projects = (projects) => projects.map((item, idx) => (
+const Projects = (props) => {
 
-    <li key={idx}>
-        <a href={item.link}
-           title={item.name}
-           target="_blank">{item.name}</a>：{item.description}
-    </li>
+    const project = (projects) => projects.map((item, idx) => (
 
-));
+        <li key={idx}>
+            <a href={item.link}
+            title={item.name}
+            target="_blank">{item.name}</a>：{item.description}
+        </li>
 
-const Projects = (props) => (
+    ));
 
-    <Fragment>
+    return (
 
-        <ul className={`projects ${props.companyIndex}`}>
-            {projects(props.projects)}
-        </ul>
+        <Fragment>
 
-    </Fragment>
+            <ul className={`projects ${props.companyIndex}`}>
+                {project(props.projects)}
+            </ul>
 
-);
+        </Fragment>
+
+    )
+};
 
 export default Projects;

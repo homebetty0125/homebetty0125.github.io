@@ -1,6 +1,7 @@
 // Space
 $space: 20px;
 $space8: 8px;
+$space12: 12px;
 $space16: 16px;
 $space24: 24px;
 $space40: calc(#{$space} * 2);
@@ -25,7 +26,17 @@ $greenLight: #00C965;
 // 材積
 $profileWidth: 28%;
 $profileImg: 180px;
-$icon: 26px;
+
+$mobileImgSize: 100px;
+$fontSize16: 16px;
+$fontSize18: 18px;
+$fontSize20: 20px;
+
+$mobileFontSize14: 0.9rem;
+$mobileFontSize16: 1rem;
+$mobileFontSize18: 1.15rem;
+$mobileFontSize20: 1.25rem;
+$mobileFontSize22: 1.4rem;
 
 // RWD 界線
 $web: 1200px;

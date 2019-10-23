@@ -38,14 +38,52 @@ img {
     }
 }
 
-.profile {
+.information {
     letter-spacing: 1px;
     color: $black;
     background-color: $greenMochaLight;
     flex: 0 0 $profileWidth;
     padding-left: $space40;
     padding-right: $space40;
+}
 
+.profile {
+    font-size: $fontSize20;
+    justify-content: center;
+    margin-bottom: $space60;
+    @include flexAlign;
+
+    .me {
+        width: $profileImg;
+        height: $profileImg;
+        border: 1px solid $purpleLight;
+        border-radius: 50%;
+        margin-right: $space;
+        padding: 4px;
+    }
+}
+
+.contact {
+    @media screen and (min-width: 1201px) {
+        margin-top: $space;
+    }
+
+    p {
+        > * {
+            @include v-align;
+        }
+    }
+
+    i {
+        font-size: $fontSize18;
+        border: 2px solid;
+        border-radius: 50%;
+        margin-right: $space8;
+        padding: 2px;
+    }
+}
+
+.other-info {
     > * {
         margin-bottom: $space60;
     }
@@ -55,43 +93,8 @@ img {
     }
 }
 
-.myInfo {
-    font-size: 20px;
-    justify-content: center;
-    @include flexAlign;
-}
-
-.me {
-    width: $profileImg;
-    height: $profileImg;
-    border: 1px solid $purpleLight;
-    border-radius: 50%;
-    margin-right: $space;
-    padding: 4px;
-}
-
-.contact {
-    margin-top: $space;
-
-    p {
-        > * {
-            @include v-align;
-        }
-    }
-
-    i {
-        width: $icon;
-        height: $icon;
-        font-size: 18px;
-        border: 2px solid;
-        border-radius: 50%;
-        margin-right: $space8;
-        padding: 2px;
-    }
-}
-
 .about {
-    font-size: 18px;
+    font-size: $fontSize18;
     margin-left: auto;
     margin-right: auto;
 }
@@ -120,7 +123,7 @@ img {
     }
 
     .major {
-        font-size: 16px;
+        font-size: $fontSize16;
     }
 
     .date {
@@ -135,26 +138,26 @@ img {
 }
 
 .experience-wrap {
-    font-size: 20px;
-    font-size: 18px;
+    font-size: $fontSize20;
     background-color: $yellowLight;
     flex: 100%;
     margin-bottom: $space40;
-    opacity: .87;
-    transition: all .4s ease-out;
-
-    &.active {
-        opacity: 1;
-    }
-
-    &:hover {
-        opacity: 1;
-        transition: all .1s ease-in;
-    }
 
     @media screen and (min-width: 1201px) {
+        opacity: .87;
+        transition: all .4s ease-out;
+
+        &.active {
+            opacity: 1;
+        }
+
+        &:hover {
+            opacity: 1;
+            transition: all .1s ease-in;
+        }
+
         &:nth-child(n + 2) {
-            font-size: 18px;
+            font-size: $fontSize18;
             flex: 1;
         }
 
@@ -171,38 +174,46 @@ img {
     color: $white;
     background-color: $grayDark;
     box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, .3);
-    padding: $space $space40;
+    padding: $space16;
     position: relative;
     justify-content: center;
     @include flexAlign;
 
-    &:before {
-        content: attr(data-idx);
-        width: $flagWidth;
-        height: $flagHeight;
-        font-size: 26px;
-        text-align: center;
-        background-color: $grayDark;
-        border: 1px solid $yellowLight;
-        padding-top: $space8;
-        position: absolute;
-        right: $space40;
-        bottom: #{-$flagWidth - 10px};
-    }
+    @media screen and (min-width: 1201px) {
+        &:before {
+            content: attr(data-idx);
+            width: $flagWidth;
+            height: $flagHeight;
+            font-size: 26px;
+            text-align: center;
+            background-color: $grayDark;
+            border: 1px solid $yellowLight;
+            padding-top: $space8;
+            position: absolute;
+            right: $space40;
+            bottom: #{-$flagWidth - 10px};
+        }
 
-    &:after {
-        content: '';
-        width: $flagWidth;
-        height: $flagWidth;
-        background-color: $yellowLight;
-        position: absolute;
-        transform: rotate(45deg);
-        right: $space40;
-        bottom: #{-$flagHeight + 10px};
+        &:after {
+            content: '';
+            width: $flagWidth;
+            height: $flagWidth;
+            background-color: $yellowLight;
+            position: absolute;
+            transform: rotate(45deg);
+            right: $space40;
+            bottom: #{-$flagHeight + 10px};
+        }
     }
 
     .gridLeft {
         margin-right: $space;
+    }
+
+    .gridRight {
+        > * {
+            line-height: 1.8;
+        }
     }
 
     img {
@@ -215,12 +226,8 @@ img {
         font-weight: bold;
     }
 
-    .name {
-        font-size: 18px;
-    }
-
     .date {
-        font-size: 16px;
+        font-size: $fontSize18;
     }
 }
 
@@ -286,7 +293,7 @@ img {
 
 .projects {
     line-height: 1.8;
-    font-size: 16px;
+    font-size: $fontSize18;
     margin-top: $space;
     padding-left: $space24;
 
@@ -340,7 +347,7 @@ img {
 
 // Web
 @media screen and (min-width: 1201px) {
-    .profile {
+    .information {
         min-width: 532px;
     }
 
@@ -368,15 +375,88 @@ img {
     }
 
     .title {
-        font-size: 24px;
+        font-size: $mobileFontSize22;
+    }
+
+    .information {
+        width: 100%;
+        max-height: 124px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);
+        flex: 1;
+        padding: 0;
+        padding: $space8 $space24 $space16;
+        position: fixed;
+        top: 0;
+        z-index: 2;
+        transition: all .3s ease-out;
+
+        &.active {
+            max-height: 100%;
+            transition: all .5s ease-in;
+
+            .other-info {
+                visibility: visible;
+            }
+
+            .about {
+                transition-delay: .3s;
+            }
+
+            .education {
+                transition-delay: .4s;
+            }
+        }
+    }
+
+    .show-more {
+        $ball: 40px;
+        width: $ball;
+        height: $ball;
+        line-height: $ball;
+        font-size: 34px;
+        text-align: center;
+        background-color: $grayLight;
+        border-radius: 50%;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .3);
+        position: absolute;
+        bottom: calc(-40px / 2);
+        @include alignX;
     }
 
     .profile {
-        flex: 1;
-        padding: $space24;
+        font-size: $mobileFontSize16;
+        margin-bottom: $space16;
+
+        .me {
+            width: $mobileImgSize;
+            height: $mobileImgSize;
+            margin-right: $space16;
+        }
+    }
+
+    .contact {
+        i {
+            font-size: $fontSize16;
+            border-width: 1px;
+        }
+    }
+
+    .other-info {
+        padding: 0 5%;
+        visibility: hidden;
 
         > * {
-            margin-bottom: $space;
+            margin-bottom: $space16;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .about {
+        p {
+            line-height: 1.6;
         }
     }
 
@@ -391,11 +471,36 @@ img {
         }
     }
 
-    .work-detail {
-        padding: $space24;
+    .item-wrap {
+        img {
+            max-width: 70px;
+        }
+    }
 
-        .title {
-            margin-bottom: $space40;
+    .experience-wrap {
+        font-size: $mobileFontSize18;
+        margin-bottom: $space;
+    }
+
+    .company-info {
+        padding: $space12;
+
+        .gridRight {
+            > * {
+                line-height: 1.6;
+            }
+        }
+
+        img {
+            max-width: $mobileImgSize;
+        }
+
+        .position {
+            font-size: $mobileFontSize20;
+        }
+
+        .date {
+            font-size: $mobileFontSize16;
         }
     }
 
@@ -403,37 +508,22 @@ img {
         padding: $space;
     }
 
-    .company-info {
-        img {
-            max-width: 100px;
-        }
-
-        .position {
-            font-size: 20px;
-        }
-
-        .name {
-            font-size: 16px;
-        }
-
-        .date {
-            font-size: 14px;
-        }
-    }
-
-    .experience-wrap {
-        font-size: 16px;
-        margin-bottom: $space;
-    }
-
     .projects {
         line-height: 1.6;
-        font-size: 14px;
+        font-size: $mobileFontSize16;
 
         li {
             &:not(:last-child) {
                 margin-bottom: $space8;
             }
+        }
+    }
+
+    .work-detail {
+        padding: $space24;
+
+        .title {
+            margin-bottom: $space40;
         }
     }
 }

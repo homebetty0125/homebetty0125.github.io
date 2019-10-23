@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import './css/Resume.scss';
 
 import logoCyberinfo from './images/cyberinfo.png';
 import logoFFN from './images/ffn.jpg';
 
-import DescCyberinfo from './components/DescCyberinfo.js';
-import DescFFNStart from './components/DescFFNStart.js';
-import DescFFNEnd from './components/DescFFNEnd.js';
+import Information from './components/Information.js';
+import Experience from './components/Experience.js';
 
 // 3: xxx.json
 // 4: axios.get('./xxx.json').then((res) => { console.log(res) });
@@ -158,153 +157,35 @@ const fakeData = {
     ],
 };
 
-const period = (start, end) => (`${start.replace(/-/g, '/')} - ${end.replace(/-/g, '/')}`),
-    handleParagraph = (str) => (str.replace(/\n/g, '<br>')),
-    showDescComponent = (company, projects) => {
-
-        switch (company) {
-            case 'ffn-start':
-                return (
-                    <DescFFNStart
-                        companyIndex={company}
-                    />
-                );
-
-            case 'ffn-end':
-                return (
-                    <DescFFNEnd
-                        compoanyIndex={company}
-                        projects={projects}
-                    />
-                );
-
-            default:
-                return (
-                    <DescCyberinfo
-                        companyIndex={company}
-                        projects={projects}
-                    />
-                );
-        }
-
-    };
-
-const Profile = (props) => (
-
-    <aside className="profile">
-        <div className="myInfo">
-            <div className="left thumb me">
-                <img src={props.image} alt={props.nameEnglish} />
-            </div>
-            <div className="right">
-                <div className="name">{props.nameChinese} <span>({props.nameEnglish})</span></div>
-                <div className="contact">
-                    <p>
-                        <i className="material-icons">phone_enabled</i>
-                        <span>{props.cellphone}</span>
-                    </p>
-                    <p>
-                        <i className="material-icons">mail</i>
-                        <span>{props.email}</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        {/* About me */}
-        <div className="about">
-            <h2 className="title" data-icon="person_pin">
-                <span>關於我</span>
-            </h2>
-            <p dangerouslySetInnerHTML={{__html: handleParagraph(props.about)}}></p>
-        </div>
-
-        {/* Education */}
-        <div className="education">
-            <h2 className="title" data-icon="school">
-                <span>學歷</span>
-            </h2>
-            <ul className="items">{education(fakeData.education)}</ul>
-        </div>
-    </aside>
-
-);
-
-// 技能
-const skill = (skills) => skills.map((item, idx) => (
-
-        <li className="skill-wrap" key={idx}>
-            <h3>{item.skill}</h3>
-            <ul>{skillItems(item.items)}</ul>
-        </li>
-
-    )),
-    skillItems = (items) => items.map((item, idx) => (
-
-        <li key={idx}>{item}</li>
-
-    ));
-
-// 學歷
-const education = (education) => education.map((item, idx) => (
-
-    <li className="item-wrap" key={idx}>
-        <div className="thumb">
-            <img src={`//btgitdev.bitbucket.io/demo/img/betty/school-${idx + 1}.jpg`} alt="" />
-        </div>
-        <div className="content">
-            <h3>{item.school}</h3>
-            <div className="major">{item.major}</div>
-            <span className="date">{period(item.start, item.end)}</span>
-        </div>
-    </li>
-
-));
-
-// 經歷
-const experience = (experiences) => experiences.map((item, idx) => (
-
-        <li className={`experience-wrap ${(idx === 0) ? 'active' : ''}`} key={idx}>
-            <div className="company-info" data-idx={idx + 1}>
-                <div className="gridLeft thumb">
-                    <img src={item.thumb} alt={item.company} />
-                </div>
-                <div className="gridRight">
-                    <p className="position">{item.position}</p>
-                    <p className="name">{item.company}</p>
-                    <span className="date">{period(item.start, item.end)}</span>
-                </div>
-            </div>
-            <div className="company-description">
-                {showDescComponent(item.companyIndex, item.projects)}
-            </div>
-        </li>
-
-    ));
-
-class Resume extends Component {
+class Resume extends PureComponent {
 
     render () {
 
         return (
 
             <main>
-                <Profile
+                {/* 其他資訊 */}
+                <Information
                     image={fakeData.profile.thumb}
                     nameChinese={fakeData.profile.nameChinese}
                     nameEnglish={fakeData.profile.nameEnglish}
                     about={fakeData.profile.about}
                     cellphone={fakeData.profile.cellphone}
                     email={fakeData.profile.email}
+                    education={fakeData.education}
+                    skills={fakeData.skills}
                 />
 
                 <section>
+                    {/* 經歷 */}
                     <div className="work-detail">
                         <h2 className="title" data-icon="stars">
-                            <span>經歷</span>
+                            <span>經驗值</span>
                         </h2>
 
-                        <ul className="items experiences">{experience(fakeData.experience)}</ul>
+                        <Experience
+                            experience={fakeData.experience}
+                        />
                     </div>
 
                     <footer>Design by Betty @2019</footer>

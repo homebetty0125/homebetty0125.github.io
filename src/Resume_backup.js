@@ -24,6 +24,33 @@ class Resume extends Component {
 
         this.showAlert = this.showAlert.bind(this);
 
+        this.state = {
+            image: '',
+            nameChinese: '',
+            nameEnglish: '',
+            about: '',
+            cellphone: '',
+            email: '',
+        };
+
+    }
+
+    componentDidMount () {
+
+        api/ajax
+        getUserData().then((res) => {
+
+            this.setState({
+                image: '',
+                nameChinese: '',
+                nameEnglish: '',
+                about: '',
+                cellphone: '',
+                email: '',
+            });
+
+        });
+
     }
 
     showAlert () {
