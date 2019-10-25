@@ -13,12 +13,15 @@ const Experience = (props) => {
             <li className={`experience-wrap ${(idx === 0) ? 'active' : ''}`} key={idx}>
                 <div className="company-info" data-idx={idx + 1}>
                     <div className="gridLeft thumb">
-                        <img src={item.thumb} alt={item.company} />
+                        <img src={`${common.imgPath}/${item.thumb}`} alt={item.company} />
                     </div>
                     <div className="gridRight">
                         <p className="position">{item.position}</p>
                         <p className="name">{item.company}</p>
-                        <span className="date">{common.period(item.start, item.end)}</span>
+                        <span className="date">
+                            <i className="material-icons">schedule</i>
+                            <span>{common.period(item.start, item.end)}</span>
+                        </span>
                     </div>
                 </div>
                 <div className="company-description">

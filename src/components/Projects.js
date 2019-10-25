@@ -5,9 +5,24 @@ const Projects = (props) => {
     const project = (projects) => projects.map((item, idx) => (
 
         <li key={idx}>
-            <a href={item.link}
-            title={item.name}
-            target="_blank">{item.name}</a>：{item.description}
+            {
+                (item.link) ? (
+
+                    <Fragment>
+                        <a href={item.link}
+                            title={item.name}
+                            target="_blank"
+                            rel="noopener noreferrer">{item.name}</a>{`：${item.description}`}
+                    </Fragment>
+
+                ) : (
+
+                    <Fragment>
+                        <span>{item.name}</span>{`：${item.description}`}
+                    </Fragment>
+
+                )
+            }
         </li>
 
     ));

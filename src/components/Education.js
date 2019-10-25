@@ -8,7 +8,7 @@ const Educations = (props) => {
 
         <li className="item-wrap" key={idx}>
             <div className="thumb">
-                <img src={`//btgitdev.bitbucket.io/demo/img/betty/school-${idx + 1}.jpg`} alt="" />
+                <img src={`${common.imgPath}/school-${idx + 1}.jpg`} alt="" />
             </div>
             <div className="content">
                 <h3>{item.school}</h3>

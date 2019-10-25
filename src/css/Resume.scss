@@ -45,9 +45,14 @@ img {
     flex: 0 0 $profileWidth;
     padding-left: $space40;
     padding-right: $space40;
+
+    @media screen and (min-width: 1025px) {
+        min-width: 532px;
+    }
 }
 
 .profile {
+    line-height: 1.8;
     font-size: $fontSize20;
     justify-content: center;
     margin-bottom: $space60;
@@ -59,27 +64,43 @@ img {
         border: 1px solid $purpleLight;
         border-radius: 50%;
         margin-right: $space;
-        padding: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    img {
+        width: 100%;
+        margin: 0 auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-45%);
     }
 }
 
 .contact {
-    @media screen and (min-width: 1201px) {
-        margin-top: $space;
+    > * {
+        line-height: 1.8;
     }
 
-    p {
-        > * {
-            @include v-align;
+    span {
+        $icon: 26px;
+        @include v-align;
+
+        &:first-child {
+            width: $icon;
+            height: $icon;
+            line-height: $icon;
+            text-align: center;
+            border: 2px solid;
+            border-radius: 50%;
+            margin-right: $space8;
         }
     }
 
     i {
         font-size: $fontSize18;
-        border: 2px solid;
-        border-radius: 50%;
-        margin-right: $space8;
-        padding: 2px;
     }
 }
 
@@ -111,7 +132,7 @@ img {
     @include flexAlign;
 
     .thumb {
-        margin-right: $space;
+        margin-right: $space16;
     }
 
     img {
@@ -143,7 +164,7 @@ img {
     flex: 100%;
     margin-bottom: $space40;
 
-    @media screen and (min-width: 1201px) {
+    @media screen and (min-width: 1025px) {
         opacity: .87;
         transition: all .4s ease-out;
 
@@ -179,7 +200,7 @@ img {
     justify-content: center;
     @include flexAlign;
 
-    @media screen and (min-width: 1201px) {
+    @media screen and (min-width: 1025px) {
         &:before {
             content: attr(data-idx);
             width: $flagWidth;
@@ -228,6 +249,10 @@ img {
 
     .date {
         font-size: $fontSize18;
+
+        i {
+            display: none;
+        }
     }
 }
 
@@ -239,55 +264,6 @@ img {
 
     p {
         position: relative;
-    }
-}
-
-.img {
-    max-width: 35%;
-    text-align: center;
-    position: absolute;
-    right: $space40;
-    top: 130px;
-
-    &:hover {
-        transition-property: all;
-        transition-timing-function: linear;
-
-        img {
-            transform: rotate(5deg) scale(1.1);
-            transition-duration: .5s;
-        }
-
-        a {
-            font-size: 22px;
-            font-weight: bold;
-            color: $greenLight;
-            left: 38%;
-            top: 65%;
-            transform: rotate(0deg);
-            transition-duration: .3s;
-        }
-    }
-
-    > * {
-        transition-property: all;
-        transition-timing-function: ease-out;
-    }
-
-    img {
-        max-width: initial;
-        border-radius: 0;
-        transform: rotate(-5deg);
-        transition-duration: .7s;
-    }
-
-    a {
-        padding: 3px 5px;
-        position: absolute;
-        left: 43%;
-        top: 68%;
-        transform: rotate(5deg);
-        transition-duration: .5s;
     }
 }
 
@@ -306,7 +282,8 @@ img {
         }
     }
 
-    a {
+    a,
+    span {
         font-weight: bold;
         text-decoration: none;
         position: relative;
@@ -345,189 +322,59 @@ img {
     }
 }
 
-// Web
-@media screen and (min-width: 1201px) {
-    .information {
-        min-width: 532px;
-    }
-
-    section {
-        min-width: 1300px;
-    }
-}
-
-// Tab
-@media screen and (max-width: $web) {
-    .web {
-        display: none;
-    }
-
-    .mobile {
-        display: block;
-    }
-
-    main {
-        flex-wrap: wrap;
-
-        > * {
-            flex: 100%;
-        }
-    }
-
-    .title {
-        font-size: $mobileFontSize22;
-    }
-
-    .information {
-        width: 100%;
-        max-height: 124px;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);
-        flex: 1;
-        padding: 0;
-        padding: $space8 $space24 $space16;
-        position: fixed;
-        top: 0;
-        z-index: 2;
-        transition: all .3s ease-out;
-
-        &.active {
-            max-height: 100%;
-            transition: all .5s ease-in;
-
-            .other-info {
-                visibility: visible;
-            }
-
-            .about {
-                transition-delay: .3s;
-            }
-
-            .education {
-                transition-delay: .4s;
-            }
-        }
-    }
-
-    .show-more {
-        $ball: 40px;
-        width: $ball;
-        height: $ball;
-        line-height: $ball;
-        font-size: 34px;
+// 蝙蝠
+@media screen and (min-width: 1025px) {
+    .bat {
+        max-width: 35%;
+        width: 437px;
+        height: 200px;
         text-align: center;
-        background-color: $grayLight;
-        border-radius: 50%;
-        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .3);
         position: absolute;
-        bottom: calc(-40px / 2);
-        @include alignX;
-    }
+        right: $space40;
+        top: 150px;
 
-    .profile {
-        font-size: $mobileFontSize16;
-        margin-bottom: $space16;
+        &:hover {
+            transition-property: all;
+            transition-timing-function: linear;
 
-        .me {
-            width: $mobileImgSize;
-            height: $mobileImgSize;
-            margin-right: $space16;
+            img {
+                transform: rotate(5deg) scale(1.1);
+                transition-duration: .5s;
+            }
+
+            a {
+                font-size: 22px;
+                font-weight: bold;
+                color: $greenLight;
+                left: 38%;
+                top: 65%;
+                transform: rotate(0deg);
+                transition-duration: .3s;
+            }
         }
-    }
-
-    .contact {
-        i {
-            font-size: $fontSize16;
-            border-width: 1px;
-        }
-    }
-
-    .other-info {
-        padding: 0 5%;
-        visibility: hidden;
 
         > * {
-            margin-bottom: $space16;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-    }
-
-    .about {
-        p {
-            line-height: 1.6;
-        }
-    }
-
-    .education {
-        .items {
-            max-width: 100%;
-            display: flex;
-
-            > * {
-                flex: 1;
-            }
-        }
-    }
-
-    .item-wrap {
-        img {
-            max-width: 70px;
-        }
-    }
-
-    .experience-wrap {
-        font-size: $mobileFontSize18;
-        margin-bottom: $space;
-    }
-
-    .company-info {
-        padding: $space12;
-
-        .gridRight {
-            > * {
-                line-height: 1.6;
-            }
+            transition-property: all;
+            transition-timing-function: ease-out;
         }
 
         img {
-            max-width: $mobileImgSize;
+            max-width: initial;
+            border-radius: 0;
+            transform: rotate(-5deg);
+            transition-duration: .7s;
         }
 
-        .position {
-            font-size: $mobileFontSize20;
-        }
-
-        .date {
-            font-size: $mobileFontSize16;
-        }
-    }
-
-    .company-description {
-        padding: $space;
-    }
-
-    .projects {
-        line-height: 1.6;
-        font-size: $mobileFontSize16;
-
-        li {
-            &:not(:last-child) {
-                margin-bottom: $space8;
-            }
-        }
-    }
-
-    .work-detail {
-        padding: $space24;
-
-        .title {
-            margin-bottom: $space40;
+        a {
+            padding: 3px 5px;
+            position: absolute;
+            left: 43%;
+            top: 68%;
+            transform: rotate(5deg);
+            transition-duration: .5s;
         }
     }
 }
 
-// Mobile
-@media screen and (max-width: $mobile) {
-}
+// 裝置開始
+@import './ResumeRWD';

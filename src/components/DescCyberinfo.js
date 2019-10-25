@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
+import common from '../lib/common';
 import Projects from './Projects';
-
 import holloweenBat from '../images/holloween-bat.png';
 
 const DescCyberinfo = (props) => {
@@ -22,17 +22,22 @@ const DescCyberinfo = (props) => {
                 <br/>
                 <br/>
                 同時也參與協同開發，像是：<br/>
-                    - 手機版建置 （於年初上線）。<br/>
+                    - 手機版建置（於年初上線）。<br/>
                     - 重構主流程 → 與其他開發者討論接口（API）設計、程式架構與畫面翻新。
                 <br/>
+
+                {/* 開啟轉送幫網站 > 蝙蝠特效 */}
+                <div className="open-tsb bat">
+                    <img src={`${common.imgPath}/holloween-bat.png`} className="web" alt="bat" />
+                    {/* <img src={holloweenBat} className="web" alt="bat"/> */}
+                    <a href={TSB.link}
+                       title={TSB.name}
+                       target="_blank"
+                       rel="noopener noreferrer">點我看{TSB.name}</a>
+                </div>
+
                 <br/>
                 而次要負責的專案有支援其他平台開發與各平台活動頁切版（Web + RWD）：
-            </div>
-
-            {/* 蝙蝠特效 */}
-            <div className="img web">
-                <img src={holloweenBat} alt="bat"/>
-                <a href={TSB.link} target="_blank">點我看{TSB.name}</a>
             </div>
 
             {/* 過往專案 */}

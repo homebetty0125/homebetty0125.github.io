@@ -1,0 +1,422 @@
+@import './_variables';
+
+@mixin alignBall ($ballSize: 40px) {
+    left: calc((100% - #{$ballSize}) / 2);
+}
+
+// Tab
+@media screen and (max-width: $web) {
+    .web {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    main {
+        flex-wrap: wrap;
+
+        > * {
+            flex: 100%;
+        }
+    }
+
+    .title {
+        font-size: $mobileFontSize22;
+    }
+
+    .information {
+        width: 100%;
+        max-height: #{$profileHeightMD + $space + 4px};
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);
+        flex: 1;
+        padding: 0;
+        padding: $space8 $space24 $space16;
+        position: fixed;
+        top: 0;
+        z-index: 2;
+        transition: all .3s ease-out;
+
+        &.active {
+            max-height: 100%;
+            transition: all .5s ease-in;
+
+            .other-info {
+                visibility: visible;
+            }
+
+            .about {
+                transition-delay: .3s;
+            }
+
+            .education {
+                transition-delay: .4s;
+            }
+        }
+    }
+
+    .show-more {
+        $ball: 40px;
+        width: $ball;
+        height: $ball;
+        background-color: $grayLight;
+        border: 0;
+        border-radius: 50%;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .3);
+        padding: 0;
+        position: absolute;
+        bottom: calc(-#{$ball} / 2);
+        outline: 0;
+        cursor: pointer;
+        @include alignBall;
+
+        i {
+            font-size: 34px;
+            vertical-align: middle;
+            // animation-name: ballArrow;
+            // animation-duration: 1s;
+            // animation-iteration-count: infinite;
+        }
+    }
+
+    .profile {
+        line-height: 1.6;
+        font-size: $mobileFontSize16;
+        margin-bottom: $space16;
+
+        .me {
+            width: $imgSizeMD;
+            height: $imgSizeMD;
+            margin-right: $space16;
+        }
+    }
+
+    .contact {
+        > * {
+            line-height: 1.6;
+        }
+
+        span {
+            $icon: 20px;
+
+            &:first-child {
+                width: $icon;
+                height: $icon;
+                line-height: #{$icon + 2px};
+                border-width: 1px;
+            }
+        }
+
+        i {
+            font-size: $fontSize16;
+        }
+    }
+
+    .other-info {
+        padding: 0 2%;
+        visibility: hidden;
+
+        > * {
+            margin-bottom: $space16;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .about {
+        p {
+            line-height: 1.6;
+        }
+    }
+
+    .education {
+        .items {
+            max-width: 100%;
+            display: flex;
+
+            > * {
+                flex: 1;
+            }
+        }
+    }
+
+    .item-wrap {
+        h3 {
+            font-size: $mobileFontSize16;
+        }
+
+        img {
+            max-width: 70px;
+        }
+    }
+
+    .experience-wrap {
+        font-size: $mobileFontSize18;
+        margin-bottom: $space;
+    }
+
+    .company-info {
+        padding: $space12;
+
+        .gridRight {
+            > * {
+                line-height: 1.6;
+            }
+        }
+
+        img {
+            max-width: $imgSizeMD;
+        }
+
+        .position {
+            font-size: $mobileFontSize20;
+        }
+
+        .date {
+            font-size: $mobileFontSize16;
+        }
+    }
+
+    .company-description {
+        padding: $space;
+    }
+
+    .open-tsb {
+        a {
+            width: 100%;
+            max-width: 320px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            background-color: $greenMocha;
+            display: block;
+            margin-top: $space;
+            padding: 10px $space;
+            transition: all .1s ease-in;
+
+            &:hover {
+                background-color: rgba(68, 68, 68, .3);
+                transition: all .3s ease-out;
+            }
+
+            &:active,
+            &:focus {
+                color: $grayLight;
+                background-color: rgba(51, 51, 51, .5);
+                outline: 0;
+            }
+        }
+    }
+
+    .projects {
+        line-height: 1.6;
+        font-size: $mobileFontSize16;
+
+        li {
+            &:not(:last-child) {
+                margin-bottom: $space8;
+            }
+        }
+    }
+
+    .work-detail {
+        padding: $space24;
+
+        .title {
+            margin-bottom: $space40;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {}
+
+// Mobile
+@media screen and (max-width: 600px) {
+    .education {
+        .items {
+            min-width: 260px;
+            max-width: 65%;
+            flex-wrap: wrap;
+
+            > * {
+                flex: 100%;
+            }
+        }
+    }
+
+    .open-tsb {
+        a {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: $mobileFontSize20;
+        margin-bottom: $space28;
+    }
+
+    .about {
+        font-size: $mobileFontSize16;
+    }
+
+    .experience-wrap {
+        font-size: $mobileFontSize16;
+    }
+
+    .company-info {
+        letter-spacing: initial;
+        padding: $space8;
+
+        .gridLeft {
+            margin-right: 12px;
+        }
+
+        img {
+            max-width: $imgSizeSM;
+        }
+
+        .position {
+            font-size: $mobileFontSize18;
+        }
+
+        .date {
+            font-size: $mobileFontSize14;
+        }
+    }
+
+    .projects {
+        margin-top: $space12;
+    }
+
+    .work-detail {
+        padding: $space16;
+
+        .title {
+            margin-bottom: $space28;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .information {
+        max-height: #{$profileHeightSM + $space12 + $space16};
+        padding-left: $space16;
+        padding-right: $space16;
+    }
+
+    .title {
+        font-size: $mobileFontSize18;
+    }
+
+    .show-more {
+        $ball: 34px;
+        width: $ball;
+        height: $ball;
+        bottom: calc(-#{$ball} / 2);
+        @include alignBall($ball);
+
+        i {
+            font-size: 28px;
+        }
+    }
+
+    .profile {
+        font-size: $mobileFontSize14;
+        margin-bottom: 12px;
+
+        .me {
+            width: $imgSizeSM;
+            height: $imgSizeSM;
+            margin-right: 12px;
+        }
+    }
+
+    .contact {
+        span {
+            $icon: 18px;
+
+            &:first-child {
+                width: $icon;
+                height: $icon;
+                line-height: #{$icon + 2px};
+            }
+        }
+
+        i {
+            font-size: 14px;
+        }
+    }
+
+    .item-wrap {
+        img {
+            max-width: 60px;
+        }
+    }
+
+    .experience-wrap {
+        margin-bottom: $space16;
+    }
+
+    .company-info {
+        .gridLeft {
+            display: none;
+        }
+
+        .gridRight {
+            > * {
+                line-height: 1.8;
+            }
+        }
+
+        .position {
+            font-size: $mobileFontSize16;
+        }
+
+        .date {
+            i {
+                font-size: $fontSize18;
+                margin-right: 4px;
+                @include v-align;
+            }
+        }
+    }
+
+    .company-description {
+        padding: $space16;
+    }
+
+    .projects {
+        a {
+            text-decoration: underline;
+            &:after {
+                display: none;
+            }
+        }
+    }
+
+    .work-detail {
+        padding: $space12;
+    }
+}
+
+// 怪怪的
+@keyframes ballArrow {
+    50% {
+        transform: translateY(3px);
+    }
+
+    80% {
+        transform: translateY(-3px);
+    }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+}

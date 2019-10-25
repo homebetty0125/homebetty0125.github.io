@@ -4,6 +4,7 @@ $space8: 8px;
 $space12: 12px;
 $space16: 16px;
 $space24: 24px;
+$space28: 28px;
 $space40: calc(#{$space} * 2);
 $space60: calc(#{$space} * 3);
 $space80: calc(#{$space} * 4);
@@ -23,11 +24,15 @@ $greenMocha: #DDF7D4;
 $greenMochaLight: #E0E3DA;
 $greenLight: #00C965;
 
-// 材積
+// Profile
 $profileWidth: 28%;
 $profileImg: 180px;
+$profileHeightMD: 120px;
+$profileHeightSM: 95px;
 
-$mobileImgSize: 100px;
+$imgSizeMD: 120px;
+$imgSizeSM: 80px;
+
 $fontSize16: 16px;
 $fontSize18: 18px;
 $fontSize20: 20px;
@@ -39,8 +44,7 @@ $mobileFontSize20: 1.25rem;
 $mobileFontSize22: 1.4rem;
 
 // RWD 界線
-$web: 1200px;
-$mobile: 768px;
+$web: 1024px;
 
 @mixin flexAlign {
     display: flex;
