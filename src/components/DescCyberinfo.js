@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import common from '../lib/common';
 import Projects from './Projects';
-import holloweenBat from '../images/holloween-bat.png';
 
 const DescCyberinfo = (props) => {
 
@@ -29,7 +28,6 @@ const DescCyberinfo = (props) => {
                 {/* 開啟轉送幫網站 > 蝙蝠特效 */}
                 <div className="open-tsb bat">
                     <img src={`${common.imgPath}/holloween-bat.png`} className="web" alt="bat" />
-                    {/* <img src={holloweenBat} className="web" alt="bat"/> */}
                     <a href={TSB.link}
                        title={TSB.name}
                        target="_blank"

@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import 'react-app-polyfill/ie11'
+import 'react-app-polyfill/stable'
+
 import './css/index.css';
 import Resume from './Resume';
 import * as serviceWorker from './serviceWorker';
