@@ -69,10 +69,20 @@ main {
 }
 
 footer {
-    font-size: 16px;
+    font-size: $fontSize16;
     text-align: center;
     background-color: $grayLight;
-    padding: $space8 $space60;
+    padding: $space16;
+
+    p {
+        &:first-child {
+            margin-bottom: $space12;
+        }
+    }
+
+    .notice {
+        font-size: 14px;
+    }
 }
 
 .web {
@@ -87,6 +97,15 @@ footer {
 @media screen and (max-width: $web) {
     section {
         padding-top: #{$profileHeightMD + $space + 4px + 10px};
+    }
+
+    footer {
+        padding-top: $space8;
+        padding-bottom: $space8;
+
+        p {
+            line-height: 1.6;
+        }
     }
 }
 

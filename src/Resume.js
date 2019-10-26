@@ -2,9 +2,10 @@ import React, { PureComponent } from 'react';
 
 import './css/Resume.scss';
 
+import Service from './lib/Service';
 import Information from './components/Information.js';
 import Experience from './components/Experience.js';
-import Service from './lib/Service';
+import Footer from './components/Footer.js';
 
 class Resume extends PureComponent {
 
@@ -76,7 +77,8 @@ class Resume extends PureComponent {
                         />
                     </div>
 
-                    <footer>Design by Betty @2019</footer>
+                    <Footer/>
+                    {/* <footer>Design by Betty @2019</footer> */}
                 </section>
             </main>
 
