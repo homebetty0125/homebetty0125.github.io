@@ -308,6 +308,13 @@
         max-height: #{$profileHeightSM + $space12 + $space16};
         padding-left: $space16;
         padding-right: $space16;
+
+        &.active {
+            .other-info {
+                max-height: 400px;
+                overflow-y: auto;
+            }
+        }
     }
 
     .title {
