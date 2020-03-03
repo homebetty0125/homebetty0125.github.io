@@ -28,7 +28,7 @@ class Resume extends PureComponent {
             .then((res) => {
 
                 const { profile, education, skills, experience } = res.data,
-                { thumb, nameChinese, nameEnglish, about, cellphone, email, github } = profile;
+                    { thumb, nameChinese, nameEnglish, about, cellphone, email, github } = profile;
 
                 this.setState({
                     thumb,
